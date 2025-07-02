@@ -58,7 +58,7 @@ export default function ContactPage() {
                 <div>
                   <h2 className="text-2xl font-bold mb-4">Get in Touch</h2>
                   <p className="text-gray-600 mb-6">
-                    We're here to help you streamline your operations with our innovative software solutions. Reach out
+                    We&apos;re here to help you streamline your operations with our innovative software solutions. Reach out
                     to us through any of the following channels:
                   </p>
                 </div>
@@ -121,7 +121,7 @@ export default function ContactPage() {
                 <CardHeader className="px-0 pt-0">
                   <CardTitle className="text-2xl">Send us a Message</CardTitle>
                   <CardDescription>
-                    Fill out the form below and we'll get back to you as soon as possible.
+                    Fill out the form below and we&apos;ll get back to you as soon as possible.
                   </CardDescription>
                 </CardHeader>
                 <CardContent className="px-0 pb-0">
@@ -233,7 +233,7 @@ export default function ContactPage() {
             <div className="text-center space-y-4">
               <h2 className="text-2xl font-bold text-white">Need Immediate Assistance?</h2>
               <p className="text-emerald-100 max-w-2xl mx-auto">
-                For urgent inquiries or immediate support, don't hesitate to call us directly. Our team is ready to help
+                For urgent inquiries or immediate support, don&apos;t hesitate to call us directly. Our team is ready to help
                 you get started with our solutions.
               </p>
               <div className="flex flex-col sm:flex-row gap-4 justify-center">

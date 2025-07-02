@@ -357,7 +357,7 @@ export default function HomePage() {
             <div className="grid gap-8 lg:grid-cols-2 items-center max-w-6xl mx-auto">
               {/* Demo Benefits */}
               <div className="space-y-6">
-                <h3 className="text-2xl font-bold">What You'll Get in Your Demo</h3>
+                <h3 className="text-2xl font-bold">What You&apos;ll Get in Your Demo</h3>
                 <div className="space-y-4">
                   <div className="flex items-start space-x-4">
                     <div className="p-2 bg-emerald-100 rounded-lg">
@@ -390,7 +390,7 @@ export default function HomePage() {
                     <div>
                       <h4 className="font-semibold text-lg">Custom Use Cases</h4>
                       <p className="text-gray-600">
-                        We'll show you how our software handles your specific workflows and requirements.
+                        We&apos;ll show you how our software handles your specific workflows and requirements.
                       </p>
                     </div>
                   </div>
@@ -426,7 +426,7 @@ export default function HomePage() {
                 <CardHeader className="px-0 pt-0">
                   <CardTitle className="text-2xl text-center">Book Your Free Demo</CardTitle>
                   <CardDescription className="text-center">
-                    Choose your preferred time and we'll reach out to schedule your personalized demonstration.
+                    Choose your preferred time and we&apos;ll reach out to schedule your personalized demonstration.
                   </CardDescription>
                 </CardHeader>
                 <CardContent className="px-0 pb-0">
@@ -529,7 +529,7 @@ export default function HomePage() {
                     </Button>
 
                     <p className="text-xs text-gray-500 text-center">
-                      Demo sessions typically last 30-45 minutes. We'll contact you within 24 hours to confirm your
+                      Demo sessions typically last 30-45 minutes. We&apos;ll contact you within 24 hours to confirm your
                       preferred time slot.
                     </p>
                   </form>

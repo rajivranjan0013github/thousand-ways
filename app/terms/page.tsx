@@ -41,8 +41,8 @@ export default function TermsOfService() {
             <section>
               <h2 className="text-2xl font-semibold mb-4">1. Acceptance of Terms</h2>
               <p className="mb-4">
-                By accessing and using the services provided by Thousand Ways ("Company", "we", "us", or "our"),
-                including TheHospital.in and TheBilling.in (collectively, the "Services"), you accept and agree to be
+                By accessing and using the services provided by Thousand Ways (&quot;Company&quot;, &quot;we&quot;, &quot;us&quot;, or &quot;our&quot;),
+                including TheHospital.in and TheBilling.in (collectively, the &quot;Services&quot;), you accept and agree to be
                 bound by the terms and provision of this agreement.
               </p>
             </section>
@@ -71,7 +71,7 @@ export default function TermsOfService() {
                 <li>Maintain the security of your account credentials</li>
                 <li>Use the Services in compliance with all applicable laws and regulations</li>
                 <li>Not use the Services for any unlawful or prohibited activities</li>
-                <li>Not attempt to gain unauthorized access to our systems or other users' accounts</li>
+                <li>Not attempt to gain unauthorized access to our systems or other users&apos; accounts</li>
                 <li>Not interfere with or disrupt the Services or servers</li>
               </ul>
             </section>

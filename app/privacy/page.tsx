@@ -41,9 +41,9 @@ export default function PrivacyPolicy() {
             <section>
               <h2 className="text-2xl font-semibold mb-4">1. Introduction</h2>
               <p className="mb-4">
-                Thousand Ways ("we", "us", or "our") is committed to protecting your privacy. This Privacy Policy
+                Thousand Ways (&quot;we&quot;, &quot;us&quot;, or &quot;our&quot;) is committed to protecting your privacy. This Privacy Policy
                 explains how we collect, use, disclose, and safeguard your information when you use our services,
-                including TheHospital.in and TheBilling.in (collectively, the "Services").
+                including TheHospital.in and TheBilling.in (collectively, the &quot;Services&quot;).
               </p>
               <p className="mb-4">
                 Please read this Privacy Policy carefully. If you do not agree with the terms of this Privacy Policy,
@@ -205,7 +205,7 @@ export default function PrivacyPolicy() {
             </section>
 
             <section>
-              <h2 className="text-2xl font-semibold mb-4">10. Children's Privacy</h2>
+              <h2 className="text-2xl font-semibold mb-4">10. Children&apos;s Privacy</h2>
               <p className="mb-4">
                 Our Services are not intended for children under the age of 13. We do not knowingly collect personal
                 information from children under 13. If we become aware that we have collected personal information from
@@ -217,7 +217,7 @@ export default function PrivacyPolicy() {
               <h2 className="text-2xl font-semibold mb-4">11. Changes to This Privacy Policy</h2>
               <p className="mb-4">
                 We may update this Privacy Policy from time to time. We will notify you of any material changes by
-                posting the new Privacy Policy on our website and updating the "Last updated" date. Your continued use
+                posting the new Privacy Policy on our website and updating the &quot;Last updated&quot; date. Your continued use
                 of our Services after such changes constitutes acceptance of the updated Privacy Policy.
               </p>
             </section>
