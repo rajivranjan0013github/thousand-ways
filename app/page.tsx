@@ -319,7 +319,7 @@ export default function HomePage() {
                 </p>
                 <div className="grid grid-cols-2 gap-4 pt-4">
                   <div className="text-center">
-                    <div className="text-2xl font-bold text-emerald-600">500+</div>
+                    <div className="text-2xl font-bold text-emerald-600">100+</div>
                     <div className="text-sm text-gray-500">Happy Clients</div>
                   </div>
                   <div className="text-center">
@@ -540,7 +540,7 @@ export default function HomePage() {
             {/* Demo Stats */}
             <div className="mt-16 grid grid-cols-2 md:grid-cols-4 gap-8 text-center">
               <div>
-                <div className="text-3xl font-bold text-emerald-600">500+</div>
+                <div className="text-3xl font-bold text-emerald-600">150+</div>
                 <div className="text-sm text-gray-500">Demos Conducted</div>
               </div>
               <div>
@@ -548,11 +548,11 @@ export default function HomePage() {
                 <div className="text-sm text-gray-500">Satisfaction Rate</div>
               </div>
               <div>
-                <div className="text-3xl font-bold text-emerald-600">30 min</div>
+                <div className="text-3xl font-bold text-emerald-600">10 min</div>
                 <div className="text-sm text-gray-500">Average Demo Time</div>
               </div>
               <div>
-                <div className="text-3xl font-bold text-emerald-600">24 hrs</div>
+                <div className="text-3xl font-bold text-emerald-600">12 hrs</div>
                 <div className="text-sm text-gray-500">Response Time</div>
               </div>
             </div>
