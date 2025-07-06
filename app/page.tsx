@@ -1,3 +1,4 @@
+"use client"
 import Image from "next/image"
 import Link from "next/link"
 import {
@@ -18,22 +19,41 @@ import {
   TestTube,
   BarChart3,
   CheckCircle,
+  Menu,
+  X,
 } from "lucide-react"
+import { useState } from "react"
 
 import { TheHospitalLogo, TheBillingLogo } from "@/components/the-hospital-logo"
 import { Button } from "@/components/ui/button"
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card"
 
 export default function HomePage() {
+  const [isMenuOpen, setIsMenuOpen] = useState(false)
+
   return (
     <div className="flex flex-col min-h-screen">
       {/* Header */}
-      <header className="px-4 lg:px-6 h-14 flex items-center border-b">
+      <header className="px-4 lg:px-6 h-14 flex items-center border-b relative">
         <Link className="flex items-center justify-center" href="#">
           <Image src="/logo.jpeg" alt="Thousand Ways Logo" width={24} height={24} className="h-6 w-6" />
           <span className="ml-2 text-lg font-bold">Thousand Ways</span>
         </Link>
-        <nav className="ml-auto flex gap-4 sm:gap-6">
+        
+        {/* Mobile Menu Button */}
+        <button 
+          className="ml-auto lg:hidden"
+          onClick={() => setIsMenuOpen(!isMenuOpen)}
+        >
+          {isMenuOpen ? (
+            <X className="h-6 w-6" />
+          ) : (
+            <Menu className="h-6 w-6" />
+          )}
+        </button>
+
+        {/* Desktop Navigation */}
+        <nav className="hidden lg:flex ml-auto gap-4 sm:gap-6">
           <Link className="text-sm font-medium hover:underline underline-offset-4" href="#products">
             Products
           </Link>
@@ -47,31 +67,67 @@ export default function HomePage() {
             Contact
           </Link>
         </nav>
+
+        {/* Mobile Navigation */}
+        {isMenuOpen && (
+          <nav className="absolute top-14 left-0 right-0 bg-white border-b shadow-lg py-4 px-4 lg:hidden z-50">
+            <div className="flex flex-col gap-4">
+              <Link 
+                className="text-sm font-medium hover:text-emerald-600" 
+                href="#products"
+                onClick={() => setIsMenuOpen(false)}
+              >
+                Products
+              </Link>
+              <Link 
+                className="text-sm font-medium hover:text-emerald-600" 
+                href="#features"
+                onClick={() => setIsMenuOpen(false)}
+              >
+                Features
+              </Link>
+              <Link 
+                className="text-sm font-medium hover:text-emerald-600" 
+                href="#about"
+                onClick={() => setIsMenuOpen(false)}
+              >
+                About
+              </Link>
+              <Link 
+                className="text-sm font-medium hover:text-emerald-600" 
+                href="/contact"
+                onClick={() => setIsMenuOpen(false)}
+              >
+                Contact
+              </Link>
+            </div>
+          </nav>
+        )}
       </header>
 
       <main className="flex-1">
         {/* Hero Section */}
-        <section className="w-full py-12 md:py-24 lg:py-32 xl:py-48 bg-gradient-to-br from-emerald-50 to-teal-50">
+        <section className="w-full py-8 md:py-12 lg:py-24 xl:py-32 bg-gradient-to-br from-emerald-50 to-teal-50">
           <div className="container px-4 mx-auto md:px-6">
             <div className="flex flex-col items-center space-y-4 text-center">
               <div className="space-y-2">
-                <h1 className="text-3xl font-bold tracking-tighter sm:text-4xl md:text-5xl lg:text-6xl/none">
+                <h1 className="text-2xl font-bold tracking-tighter sm:text-3xl md:text-4xl lg:text-5xl/none">
                   Transforming Healthcare & Business
                   <span className="text-emerald-600"> Management</span>
                 </h1>
-                <p className="mx-auto max-w-[700px] text-gray-500 md:text-xl dark:text-gray-400">
+                <p className="mx-auto max-w-[700px] text-gray-500 text-sm md:text-base lg:text-xl dark:text-gray-400 px-4">
                   Thousand Ways delivers cutting-edge software solutions for hospitals and businesses. Streamline
                   operations, enhance patient care, and optimize billing processes with our innovative platforms.
                 </p>
               </div>
-              <div className="space-x-4">
-                <Button size="lg" className="bg-emerald-600 hover:bg-emerald-700" asChild>
+              <div className="flex flex-col sm:flex-row gap-4 sm:space-x-4 w-full sm:w-auto px-4">
+                <Button size="lg" className="bg-emerald-600 hover:bg-emerald-700 w-full sm:w-auto" asChild>
                   <Link href="#products">
                     Explore Products
                     <ArrowRight className="ml-2 h-4 w-4" />
                   </Link>
                 </Button>
-                <Button variant="outline" size="lg" asChild>
+                <Button variant="outline" size="lg" className="w-full sm:w-auto" asChild>
                   <Link href="/contact">Schedule Demo</Link>
                 </Button>
               </div>
@@ -80,21 +136,21 @@ export default function HomePage() {
         </section>
 
         {/* Products Section */}
-        <section id="products" className="w-full py-12 md:py-24 lg:py-32">
+        <section id="products" className="w-full py-8 md:py-12 lg:py-24">
           <div className="container px-4 mx-auto md:px-6">
-            <div className="text-center mb-12">
-              <h2 className="text-3xl font-bold tracking-tighter sm:text-4xl md:text-5xl">Our Products</h2>
-              <p className="mx-auto max-w-[700px] text-gray-500 md:text-xl mt-4">
+            <div className="text-center mb-8 md:mb-12">
+              <h2 className="text-2xl font-bold tracking-tighter sm:text-3xl md:text-4xl">Our Products</h2>
+              <p className="mx-auto max-w-[700px] text-gray-500 text-sm md:text-base lg:text-xl mt-4 px-4">
                 Comprehensive solutions designed to meet the unique needs of healthcare and business sectors.
               </p>
             </div>
-            <div className="grid gap-8 md:grid-cols-2 lg:grid-cols-4">
+            <div className="grid gap-6 md:gap-8 grid-cols-1 md:grid-cols-2 lg:grid-cols-4">
               {/* TheHospital.in */}
               <Card className="relative overflow-hidden group hover:shadow-lg transition-shadow h-full flex flex-col">
                 <CardHeader className="pb-4">
                   <div className="flex items-center space-x-2">
                     <TheHospitalLogo className="h-8 w-8" />
-                    <CardTitle className="text-xl">TheHospital.in</CardTitle>
+                    <CardTitle className="text-lg md:text-xl">TheHospital.in</CardTitle>
                   </div>
                   <CardDescription className="text-sm">Complete Hospital Management System</CardDescription>
                 </CardHeader>
@@ -106,19 +162,19 @@ export default function HomePage() {
                     </p>
                     <div className="space-y-2">
                       <div className="flex items-center space-x-2">
-                        <Users className="h-4 w-4 text-emerald-600" />
+                        <Users className="h-4 w-4 text-emerald-600 flex-shrink-0" />
                         <span className="text-sm">Patient Management</span>
                       </div>
                       <div className="flex items-center space-x-2">
-                        <Calendar className="h-4 w-4 text-emerald-600" />
+                        <Calendar className="h-4 w-4 text-emerald-600 flex-shrink-0" />
                         <span className="text-sm">Appointment Scheduling</span>
                       </div>
                       <div className="flex items-center space-x-2">
-                        <FileText className="h-4 w-4 text-emerald-600" />
+                        <FileText className="h-4 w-4 text-emerald-600 flex-shrink-0" />
                         <span className="text-sm">Electronic Health Records</span>
                       </div>
                       <div className="flex items-center space-x-2">
-                        <Shield className="h-4 w-4 text-emerald-600" />
+                        <Shield className="h-4 w-4 text-emerald-600 flex-shrink-0" />
                         <span className="text-sm">HIPAA Compliant</span>
                       </div>
                     </div>
@@ -139,7 +195,7 @@ export default function HomePage() {
                 <CardHeader className="pb-4">
                   <div className="flex items-center space-x-2">
                     <TheBillingLogo className="h-8 w-8" />
-                    <CardTitle className="text-xl">TheBilling.in</CardTitle>
+                    <CardTitle className="text-lg md:text-xl">TheBilling.in</CardTitle>
                   </div>
                   <CardDescription className="text-sm">Advanced Billing & Invoice Management</CardDescription>
                 </CardHeader>
@@ -151,19 +207,19 @@ export default function HomePage() {
                     </p>
                     <div className="space-y-2">
                       <div className="flex items-center space-x-2">
-                        <Zap className="h-4 w-4 text-emerald-600" />
+                        <Zap className="h-4 w-4 text-emerald-600 flex-shrink-0" />
                         <span className="text-sm">Automated Invoicing</span>
                       </div>
                       <div className="flex items-center space-x-2">
-                        <CreditCard className="h-4 w-4 text-emerald-600" />
+                        <CreditCard className="h-4 w-4 text-emerald-600 flex-shrink-0" />
                         <span className="text-sm">Payment Processing</span>
                       </div>
                       <div className="flex items-center space-x-2">
-                        <FileText className="h-4 w-4 text-emerald-600" />
+                        <FileText className="h-4 w-4 text-emerald-600 flex-shrink-0" />
                         <span className="text-sm">Financial Reporting</span>
                       </div>
                       <div className="flex items-center space-x-2">
-                        <Shield className="h-4 w-4 text-emerald-600" />
+                        <Shield className="h-4 w-4 text-emerald-600 flex-shrink-0" />
                         <span className="text-sm">Secure & Compliant</span>
                       </div>
                     </div>
@@ -183,8 +239,8 @@ export default function HomePage() {
               <Card className="relative overflow-hidden group hover:shadow-lg transition-shadow h-full flex flex-col">
                 <CardHeader className="pb-4">
                   <div className="flex items-center space-x-2">
-                    <Pill className="h-8 w-8 text-green-500" />
-                    <CardTitle className="text-xl">ThePharmacy</CardTitle>
+                    <Pill className="h-8 w-8 text-green-500 flex-shrink-0" />
+                    <CardTitle className="text-lg md:text-xl">ThePharmacy</CardTitle>
                   </div>
                   <CardDescription className="text-sm">Complete Pharmacy Management System</CardDescription>
                 </CardHeader>
@@ -196,19 +252,19 @@ export default function HomePage() {
                     </p>
                     <div className="space-y-2">
                       <div className="flex items-center space-x-2">
-                        <Package className="h-4 w-4 text-emerald-600" />
+                        <Package className="h-4 w-4 text-emerald-600 flex-shrink-0" />
                         <span className="text-sm">Inventory Management</span>
                       </div>
                       <div className="flex items-center space-x-2">
-                        <FileText className="h-4 w-4 text-emerald-600" />
+                        <FileText className="h-4 w-4 text-emerald-600 flex-shrink-0" />
                         <span className="text-sm">Prescription Tracking</span>
                       </div>
                       <div className="flex items-center space-x-2">
-                        <AlertTriangle className="h-4 w-4 text-emerald-600" />
+                        <AlertTriangle className="h-4 w-4 text-emerald-600 flex-shrink-0" />
                         <span className="text-sm">Expiry Management</span>
                       </div>
                       <div className="flex items-center space-x-2">
-                        <Shield className="h-4 w-4 text-emerald-600" />
+                        <Shield className="h-4 w-4 text-emerald-600 flex-shrink-0" />
                         <span className="text-sm">Regulatory Compliance</span>
                       </div>
                     </div>
@@ -226,8 +282,8 @@ export default function HomePage() {
               <Card className="relative overflow-hidden group hover:shadow-lg transition-shadow h-full flex flex-col">
                 <CardHeader className="pb-4">
                   <div className="flex items-center space-x-2">
-                    <FlaskConical className="h-8 w-8 text-purple-500" />
-                    <CardTitle className="text-xl">TheLab</CardTitle>
+                    <FlaskConical className="h-8 w-8 text-purple-500 flex-shrink-0" />
+                    <CardTitle className="text-lg md:text-xl">TheLab</CardTitle>
                   </div>
                   <CardDescription className="text-sm">Advanced Laboratory Information System</CardDescription>
                 </CardHeader>
@@ -239,19 +295,19 @@ export default function HomePage() {
                     </p>
                     <div className="space-y-2">
                       <div className="flex items-center space-x-2">
-                        <TestTube className="h-4 w-4 text-emerald-600" />
+                        <TestTube className="h-4 w-4 text-emerald-600 flex-shrink-0" />
                         <span className="text-sm">Test Management</span>
                       </div>
                       <div className="flex items-center space-x-2">
-                        <BarChart3 className="h-4 w-4 text-emerald-600" />
+                        <BarChart3 className="h-4 w-4 text-emerald-600 flex-shrink-0" />
                         <span className="text-sm">Result Processing</span>
                       </div>
                       <div className="flex items-center space-x-2">
-                        <CheckCircle className="h-4 w-4 text-emerald-600" />
+                        <CheckCircle className="h-4 w-4 text-emerald-600 flex-shrink-0" />
                         <span className="text-sm">Quality Control</span>
                       </div>
                       <div className="flex items-center space-x-2">
-                        <Shield className="h-4 w-4 text-emerald-600" />
+                        <Shield className="h-4 w-4 text-emerald-600 flex-shrink-0" />
                         <span className="text-sm">NABL Compliant</span>
                       </div>
                     </div>
@@ -269,75 +325,77 @@ export default function HomePage() {
         </section>
 
         {/* Features Section */}
-        <section id="features" className="w-full py-12 md:py-24 lg:py-32 bg-gray-50">
+        <section id="features" className="w-full py-8 md:py-12 lg:py-24 bg-gray-50">
           <div className="container px-4 mx-auto md:px-6">
-            <div className="text-center mb-12">
-              <h2 className="text-3xl font-bold tracking-tighter sm:text-4xl md:text-5xl">Why Choose Thousand Ways?</h2>
-              <p className="mx-auto max-w-[700px] text-gray-500 md:text-xl mt-4">
+            <div className="text-center mb-8 md:mb-12">
+              <h2 className="text-2xl font-bold tracking-tighter sm:text-3xl md:text-4xl">Why Choose Thousand Ways?</h2>
+              <p className="mx-auto max-w-[700px] text-gray-500 text-sm md:text-base lg:text-xl mt-4 px-4">
                 We combine innovation, reliability, and user-centric design to deliver exceptional software solutions.
               </p>
             </div>
-            <div className="grid gap-8 md:grid-cols-2 lg:grid-cols-3">
-              <div className="flex flex-col items-center text-center space-y-4">
+            <div className="grid gap-6 md:gap-8 grid-cols-1 sm:grid-cols-2 lg:grid-cols-3">
+              <div className="flex flex-col items-center text-center space-y-4 p-4">
                 <div className="p-3 bg-emerald-100 rounded-full">
-                  <Zap className="h-8 w-8 text-emerald-600" />
+                  <Zap className="h-6 w-6 md:h-8 md:w-8 text-emerald-600" />
                 </div>
-                <h3 className="text-xl font-bold">Lightning Fast</h3>
-                <p className="text-gray-500">
+                <h3 className="text-lg md:text-xl font-bold">Lightning Fast</h3>
+                <p className="text-gray-500 text-sm md:text-base">
                   Optimized performance ensures your operations run smoothly without delays.
                 </p>
               </div>
-              <div className="flex flex-col items-center text-center space-y-4">
+              <div className="flex flex-col items-center text-center space-y-4 p-4">
                 <div className="p-3 bg-emerald-100 rounded-full">
-                  <Shield className="h-8 w-8 text-emerald-600" />
+                  <Shield className="h-6 w-6 md:h-8 md:w-8 text-emerald-600" />
                 </div>
-                <h3 className="text-xl font-bold">Secure & Compliant</h3>
-                <p className="text-gray-500">Enterprise-grade security with full compliance to industry standards.</p>
+                <h3 className="text-lg md:text-xl font-bold">Secure & Compliant</h3>
+                <p className="text-gray-500 text-sm md:text-base">Enterprise-grade security with full compliance to industry standards.</p>
               </div>
-              <div className="flex flex-col items-center text-center space-y-4">
+              <div className="flex flex-col items-center text-center space-y-4 p-4">
                 <div className="p-3 bg-emerald-100 rounded-full">
-                  <Users className="h-8 w-8 text-emerald-600" />
+                  <Users className="h-6 w-6 md:h-8 md:w-8 text-emerald-600" />
                 </div>
-                <h3 className="text-xl font-bold">24/7 Support</h3>
-                <p className="text-gray-500">Round-the-clock customer support to ensure your success.</p>
+                <h3 className="text-lg md:text-xl font-bold">24/7 Support</h3>
+                <p className="text-gray-500 text-sm md:text-base">Round-the-clock customer support to ensure your success.</p>
               </div>
             </div>
           </div>
         </section>
 
         {/* About Section */}
-        <section id="about" className="w-full py-12 md:py-24 lg:py-32">
+        <section id="about" className="w-full py-8 md:py-12 lg:py-24">
           <div className="container px-4 mx-auto md:px-6">
             <div className="grid gap-8 lg:grid-cols-2 items-center">
               <div className="space-y-4">
-                <h2 className="text-3xl font-bold tracking-tighter sm:text-4xl md:text-5xl">About Thousand Ways</h2>
-                <p className="text-gray-500 md:text-lg">
+                <h2 className="text-2xl font-bold tracking-tighter sm:text-3xl md:text-4xl">About Thousand Ways</h2>
+                <p className="text-gray-500 text-sm md:text-base lg:text-lg">
                   Founded with a vision to revolutionize healthcare and business management, Thousand Ways has been at
                   the forefront of developing innovative software solutions that make a real difference.
                 </p>
-                <p className="text-gray-500 md:text-lg">
+                <p className="text-gray-500 text-sm md:text-base lg:text-lg">
                   Our team of experienced developers, healthcare professionals, and business experts work together to
                   create platforms that not only meet current needs but anticipate future challenges.
                 </p>
                 <div className="grid grid-cols-2 gap-4 pt-4">
-                  <div className="text-center">
-                    <div className="text-2xl font-bold text-emerald-600">100+</div>
+                  <div className="text-center p-4 bg-gray-50 rounded-lg">
+                    <div className="text-xl md:text-2xl font-bold text-emerald-600">100+</div>
                     <div className="text-sm text-gray-500">Happy Clients</div>
                   </div>
-                  <div className="text-center">
-                    <div className="text-2xl font-bold text-emerald-600">99.9%</div>
+                  <div className="text-center p-4 bg-gray-50 rounded-lg">
+                    <div className="text-xl md:text-2xl font-bold text-emerald-600">99.9%</div>
                     <div className="text-sm text-gray-500">Uptime</div>
                   </div>
                 </div>
               </div>
               <div className="lg:pl-8">
-                <Image
-                  src="/main.jpeg"
-                  alt="Thousand Ways team"
-                  width={600}
-                  height={400}
-                  className="rounded-lg object-cover"
-                />
+                <div className="relative aspect-video w-full overflow-hidden rounded-lg">
+                  <Image
+                    src="/main.jpeg"
+                    alt="Thousand Ways team"
+                    fill
+                    className="object-cover"
+                    sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
+                  />
+                </div>
               </div>
             </div>
           </div>
@@ -703,19 +761,19 @@ export default function HomePage() {
       </main>
 
       {/* Footer */}
-      <footer className="bg-gray-900 text-white py-12">
+      <footer className="bg-gray-900 text-white py-8 md:py-12">
         <div className="container px-4 mx-auto md:px-6">
-          <div className="grid gap-8 md:grid-cols-2 lg:grid-cols-4">
+          <div className="grid gap-8 grid-cols-1 sm:grid-cols-2 lg:grid-cols-4">
             {/* Company Info */}
             <div className="space-y-4">
               <div className="flex items-center">
-                <Building2 className="h-6 w-6 text-emerald-400" />
-                <span className="ml-2 text-lg font-bold">Thousand Ways</span>
+                <Building2 className="h-5 w-5 md:h-6 md:w-6 text-emerald-400" />
+                <span className="ml-2 text-base md:text-lg font-bold">Thousand Ways</span>
               </div>
-              <p className="text-gray-300 text-sm">
+              <p className="text-gray-300 text-sm md:text-base">
                 Transforming healthcare and business management with innovative software solutions.
               </p>
-              <div className="text-xs text-gray-400 space-y-1">
+              <div className="text-xs md:text-sm text-gray-400 space-y-1">
                 <p>GSIN: 10AAKCT1747Q1ZZ</p>
                 <p>CIN: U62099BR2023PTC063443</p>
                 <p>Registered in Bihar, India</p>
@@ -724,8 +782,8 @@ export default function HomePage() {
 
             {/* Contact Information */}
             <div className="space-y-4">
-              <h3 className="text-lg font-semibold">Contact Us</h3>
-              <div className="space-y-2 text-sm text-gray-300">
+              <h3 className="text-base md:text-lg font-semibold">Contact Us</h3>
+              <div className="space-y-2 text-sm md:text-base text-gray-300">
                 <div className="flex items-start space-x-2">
                   <span className="font-medium">Email:</span>
                   <a href="mailto:thousandways.help@gmail.com" className="hover:text-emerald-400 transition-colors">
@@ -751,8 +809,8 @@ export default function HomePage() {
 
             {/* Products */}
             <div className="space-y-4">
-              <h3 className="text-lg font-semibold">Our Products</h3>
-              <div className="space-y-2 text-sm">
+              <h3 className="text-base md:text-lg font-semibold">Our Products</h3>
+              <div className="space-y-2 text-sm md:text-base">
                 <Link
                   href="https://thehospital.in"
                   target="_blank"
@@ -778,8 +836,8 @@ export default function HomePage() {
 
             {/* Quick Links */}
             <div className="space-y-4">
-              <h3 className="text-lg font-semibold">Quick Links</h3>
-              <div className="space-y-2 text-sm">
+              <h3 className="text-base md:text-lg font-semibold">Quick Links</h3>
+              <div className="space-y-2 text-sm md:text-base">
                 <Link href="#products" className="block text-gray-300 hover:text-emerald-400 transition-colors">
                   Products
                 </Link>
@@ -798,15 +856,15 @@ export default function HomePage() {
 
           {/* Bottom Footer */}
           <div className="border-t border-gray-800 mt-8 pt-8 flex flex-col sm:flex-row justify-between items-center">
-            <p className="text-xs text-gray-400">© 2024 Thousand Ways. All rights reserved.</p>
+            <p className="text-xs md:text-sm text-gray-400">© {new Date().getFullYear()} Thousand Ways. All rights reserved.</p>
             <nav className="flex gap-4 sm:gap-6 mt-4 sm:mt-0">
-              <Link className="text-xs text-gray-400 hover:text-emerald-400 transition-colors" href="/terms">
+              <Link className="text-xs md:text-sm text-gray-400 hover:text-emerald-400 transition-colors" href="/terms">
                 Terms of Service
               </Link>
-              <Link className="text-xs text-gray-400 hover:text-emerald-400 transition-colors" href="/privacy">
+              <Link className="text-xs md:text-sm text-gray-400 hover:text-emerald-400 transition-colors" href="/privacy">
                 Privacy Policy
               </Link>
-              <Link className="text-xs text-gray-400 hover:text-emerald-400 transition-colors" href="#">
+              <Link className="text-xs md:text-sm text-gray-400 hover:text-emerald-400 transition-colors" href="#">
                 Support
               </Link>
             </nav>
