@@ -68,12 +68,6 @@ export default function ContactPage() {
     }
   }
 
-  const mailtoLink = `mailto:thousandways.help@gmail.com?subject=${encodeURIComponent(
-    formData.subject
-  )}&body=${encodeURIComponent(
-    `Name: ${formData.name}\nMobile: ${formData.mobile}\nCompany: ${formData.company}\n\nMessage:\n${formData.message}`
-  )}`
-
   return (
     <div className="flex flex-col min-h-screen">
       {/* Header */}
