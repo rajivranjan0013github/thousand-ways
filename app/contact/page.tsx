@@ -1,10 +1,35 @@
+"use client"
+
 import Image from "next/image"
 import Link from "next/link"
 import { Building2, ArrowLeft, Phone, Mail, MapPin } from "lucide-react"
 import { Button } from "@/components/ui/button"
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card"
+import * as React from "react"
 
 export default function ContactPage() {
+  const [formData, setFormData] = React.useState({
+    name: "",
+    mobile: "",
+    company: "",
+    subject: "",
+    message: "",
+  })
+
+  const handleInputChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement>) => {
+    const { name, value } = e.target
+    setFormData((prevData) => ({
+      ...prevData,
+      [name]: value,
+    }))
+  }
+
+  const mailtoLink = `mailto:thousandways.help@gmail.com?subject=${encodeURIComponent(
+    formData.subject
+  )}&body=${encodeURIComponent(
+    `Name: ${formData.name}\nMobile: ${formData.mobile}\nCompany: ${formData.company}\n\nMessage:\n${formData.message}`
+  )}`
+
   return (
     <div className="flex flex-col min-h-screen">
       {/* Header */}
@@ -137,6 +162,8 @@ export default function ContactPage() {
                         required
                         className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-emerald-500 focus:border-emerald-500"
                         placeholder="Enter your full name"
+                        value={formData.name}
+                        onChange={handleInputChange}
                       />
                     </div>
 
@@ -151,6 +178,8 @@ export default function ContactPage() {
                         required
                         className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-emerald-500 focus:border-emerald-500"
                         placeholder="Enter your mobile number"
+                        value={formData.mobile}
+                        onChange={handleInputChange}
                       />
                     </div>
 
@@ -164,6 +193,8 @@ export default function ContactPage() {
                         type="text"
                         className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-emerald-500 focus:border-emerald-500"
                         placeholder="Enter your company or organization name"
+                        value={formData.company}
+                        onChange={handleInputChange}
                       />
                     </div>
 
@@ -176,6 +207,8 @@ export default function ContactPage() {
                         name="subject"
                         required
                         className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-emerald-500 focus:border-emerald-500"
+                        value={formData.subject}
+                        onChange={handleInputChange}
                       >
                         <option value="">Select a subject</option>
                         <option value="general">General Inquiry</option>
@@ -202,11 +235,13 @@ export default function ContactPage() {
                         required
                         className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-emerald-500 focus:border-emerald-500"
                         placeholder="Tell us about your requirements, questions, or how we can help you..."
+                        value={formData.message}
+                        onChange={handleInputChange}
                       />
                     </div>
 
-                    <Button type="submit" className="w-full bg-emerald-600 hover:bg-emerald-700 py-3">
-                      Send Message
+                    <Button asChild className="w-full bg-emerald-600 hover:bg-emerald-700 py-3">
+                      <Link href={mailtoLink}>Send Message</Link>
                     </Button>
 
                     <p className="text-xs text-gray-500 text-center">

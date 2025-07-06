@@ -65,12 +65,14 @@ export default function HomePage() {
                 </p>
               </div>
               <div className="space-x-4">
-                <Button size="lg" className="bg-emerald-600 hover:bg-emerald-700">
-                  Explore Products
-                  <ArrowRight className="ml-2 h-4 w-4" />
+                <Button size="lg" className="bg-emerald-600 hover:bg-emerald-700" asChild>
+                  <Link href="#products">
+                    Explore Products
+                    <ArrowRight className="ml-2 h-4 w-4" />
+                  </Link>
                 </Button>
-                <Button variant="outline" size="lg">
-                  Schedule Demo
+                <Button variant="outline" size="lg" asChild>
+                  <Link href="/contact">Schedule Demo</Link>
                 </Button>
               </div>
             </div>
@@ -529,7 +531,7 @@ export default function HomePage() {
                     </Button>
 
                     <p className="text-xs text-gray-500 text-center">
-                      Demo sessions typically last 30-45 minutes. We&apos;ll contact you within 24 hours to confirm your
+                      Demo sessions typically last 10-15 minutes. We&apos;ll contact you within 24 hours to confirm your
                       preferred time slot.
                     </p>
                   </form>
@@ -624,15 +626,16 @@ export default function HomePage() {
                 </p>
               </div>
               <div className="space-x-4">
-                <Button size="lg" variant="secondary">
-                  Get Started Today
+                <Button size="lg" variant="secondary" asChild>
+                  <Link href="/contact">Get Started Today</Link>
                 </Button>
                 <Button
                   size="lg"
                   variant="outline"
                   className="text-white border-white hover:bg-white hover:text-emerald-600 bg-transparent"
+                  asChild
                 >
-                  Contact Sales
+                  <Link href="/contact">Contact Sales</Link>
                 </Button>
               </div>
             </div>
